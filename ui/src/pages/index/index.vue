@@ -1,29 +1,30 @@
-<!--
- Copyright (C) 2025 Template Author
- 
- This file is part of miniapp-template.
- 
- miniapp-template is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
- 
- miniapp-template is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- 
- You should have received a copy of the GNU General Public License
- along with miniapp-template.  If not, see <https://www.gnu.org/licenses/>.
--->
-
 <template>
-    <scroller class="container" scroll-direction="vertical" :show-scrollbar="true">
-        <div class="section">
-            <text class="section-title">miniapp-template</text>
-            <div class="item"><text class="item-text">Hello, Dictionary Pen!</text></div>
+    <div class="container">
+        <div class="header">
+            <text class="header-title">Memos 同步</text>
+            <text class="header-status">{{ statusText }}</text>
         </div>
-    </scroller>
+        <div class="toolbar">
+            <text class="btn btn-flex btn-primary" @click="goCompose">新建</text>
+            <text class="btn btn-flex btn-success" @click="syncMemos">同步</text>
+            <text class="btn btn-flex btn-info" @click="goSettings">设置</text>
+        </div>
+        <div class="status-bar">
+            <text v-if="error" class="error-text">{{ error }}</text>
+            <text v-else-if="info" class="success-text">{{ info }}</text>
+        </div>
+        <scroller class="memo-list" scroll-direction="vertical" :show-scrollbar="true">
+            <text v-if="!hasMemos && !loading" class="empty-text">暂无 Memo
+
+点击"设置"配置服务器
+点击"新建"撰写 Memo
+点击"同步"拉取列表</text>
+            <div v-for="(memo, i) in memos" :key="i" class="memo-item">
+                <text class="memo-content">{{ truncate(memo.content, 100) }}</text>
+                <text class="memo-time">{{ formatTime(memo.createTime) }}</text>
+            </div>
+        </scroller>
+    </div>
 </template>
 
 <style lang="less" scoped>

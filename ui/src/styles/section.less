@@ -5,85 +5,62 @@
     width: 100%;
     height: 100%;
     padding: 5px;
-}
-
-.section {
-    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    background-color: #1a1a1a;
 }
 
-.section-title {
-    font-size: 20px;
-    color: #ffc107;
-    border-bottom-width: 1px;
-    border-bottom-color: #333333;
-    padding-bottom: 2px;
-}
-
-.item {
-    min-height: 24px;
+.header {
+    height: 28px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 5px;
+    justify-content: space-between;
+    margin-bottom: 4px;
 }
 
-.item-text {
-    height: 24px;
-    line-height: 24px;
+.header-title {
     font-size: 18px;
-    color: #ffffff;
+    color: #ffc107;
+    font-weight: bold;
 }
 
-.item-input,
-.item-textarea {
-    flex: 1;
-
-    height: 24px;
-    background-color: #111111;
-    color: #ffffff;
-    border-width: 1px;
-    border-color: #444444;
-    font-size: 18px;
-    line-height: 20px;
-    padding: 2px;
-    border-radius: 3px;
+.header-back {
+    font-size: 14px;
+    color: #17a2b8;
+    width: 60px;
 }
 
-.item-input-disabled {
-    background-color: #222222;
-    color: #888888;
-    border-color: #333333;
-}
-
-.item-textarea {
-    min-height: 80px;
+.header-status {
+    font-size: 12px;
+    color: #aaaaaa;
 }
 
 .btn {
-    height: 24px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 14px;
     border-radius: 3px;
-    padding: 0 8px;
+    color: #ffffff;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.btn-flex {
+    flex: 1;
 }
 
 .btn-primary {
     background-color: #007acc;
-    color: #ffffff;
 }
 
 .btn-success {
     background-color: #28a745;
-    color: #ffffff;
 }
 
 .btn-danger {
     background-color: #dc3545;
-    color: #ffffff;
 }
 
 .btn-warning {
@@ -93,13 +70,25 @@
 
 .btn-info {
     background-color: #17a2b8;
-    color: #ffffff;
 }
 
-.btn-area {
-    height: 24px;
-    width: 100%;
+.btn-disabled {
+    background-color: #555555;
+    color: #999999;
+}
+
+.btn-row {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    margin-top: 4px;
+}
+
+.error-text {
+    font-size: 13px;
+    color: #ff6b6b;
+}
+
+.success-text {
+    font-size: 13px;
+    color: #51cf66;
 }

@@ -19,6 +19,7 @@ aiot-vue-cli/node_modules/
 ui/*.amr
 ui/libs/
 ui/dist/
+ui/.falcon_/
 
 # VS Code
 .vscode/

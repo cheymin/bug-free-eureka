@@ -64,6 +64,13 @@ type FalconCallback<T> = (data: FalconEvent<T>) => void;
 
 declare const $falcon: Falcon;
 
+// Allow importing .vue single-file components from .ts files.
+declare module '*.vue' {
+    import { DefineComponent } from 'vue';
+    const component: DefineComponent<{}, {}, any>;
+    export default component;
+}
+
 type FalconPage<T> = {
     $falcon: Falcon,
     $root: Object,
