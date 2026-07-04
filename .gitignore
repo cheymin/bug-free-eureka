@@ -1,0 +1,33 @@
+# Build output
+dist/
+jsapi/build/
+
+# Toolchain (downloaded at build time, not committed)
+jsapi/toolchains/*
+!jsapi/toolchains/.gitkeep
+
+# versionInfo archives (downloaded at build time)
+*.tar.gz
+*.tar.bz2
+
+# Node / pnpm
+node_modules/
+ui/node_modules/
+aiot-vue-cli/node_modules/
+
+# UI build artifacts
+ui/*.amr
+ui/libs/
+ui/dist/
+
+# VS Code
+.vscode/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
+# macOS
+.DS_Store
