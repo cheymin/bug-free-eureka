@@ -1,6 +1,7 @@
 {
   "pages": {
-    "index": "pages/index/index.vue"
+    "index": "pages/index/index.vue",
+    "settings": "pages/settings/settings.vue"
   },
   "options": {
     "style": {
