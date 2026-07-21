@@ -354,7 +354,7 @@ std::string AI::generateResponse(AIStreamCallback streamCallback)
         currentBaseUrl = baseUrl;
     }
 
-    Response response = Fetch::fetch(currentBaseUrl + "chat/completions",
+    Response response = Fetch::fetch(currentBaseUrl + "api/v1/chat/completions",
                                      FetchOptions("POST",
                                                   {{"Content-Type", "application/json"},
                                                    {"Authorization", "Bearer " + currentApiKey},
@@ -425,7 +425,7 @@ std::vector<std::string> AI::getModels()
     }
 
     std::vector<std::string> modelIds;
-    Response response = Fetch::fetch(currentBaseUrl + "models",
+    Response response = Fetch::fetch(currentBaseUrl + "api/v1/models",
                                      FetchOptions("GET",
                                                   {{"Authorization", "Bearer " + currentApiKey}}));
     if (!response.isOk())
@@ -436,23 +436,4 @@ std::vector<std::string> AI::getModels()
     return modelIds;
 }
 
-float AI::getUserBalance()
-{
-    std::string currentApiKey, currentBaseUrl;
-    {
-        std::lock_guard<std::mutex> settingsLock(settingsMutex);
-        currentApiKey = apiKey;
-        currentBaseUrl = baseUrl;
-    }
 
-    Response response = Fetch::fetch(currentBaseUrl + "user/balance",
-                                     FetchOptions("GET",
-                                                  {{"Authorization", "Bearer " + currentApiKey}}));
-    if (!response.isOk())
-        THROW_NETWORK_ERROR(response.status);
-    nlohmann::json responseJson = response.json();
-    for (const auto &balanceInfo : responseJson.at("balance_infos"))
-        if (balanceInfo.at("currency") == "CNY")
-            return std::atof(std::string(balanceInfo.at("total_balance")).c_str());
-    return 0.0f;
-}

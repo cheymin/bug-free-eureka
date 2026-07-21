@@ -37,7 +37,7 @@ class AI
 private:
     ConversationManager conversationManager;
     std::string apiKey, baseUrl;
-    std::string model = "deepseek-chat";
+    std::string model = "gpt-3.5-turbo";
     int maxTokens = 1000;
     double temperature = 0.7;
     double topP = 1.0;
@@ -86,5 +86,4 @@ public:
     std::string generateResponse(AIStreamCallback streamCallback);
     void stopGeneration();
     std::vector<std::string> getModels();
-    float getUserBalance();
 };

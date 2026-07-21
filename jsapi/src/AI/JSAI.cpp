@@ -208,20 +208,6 @@ void JSAI::getModels(JQAsyncInfo &info)
         info.postError(e.what());
     }
 }
-void JSAI::getUserBalance(JQAsyncInfo &info)
-{
-    try
-    {
-        ASSERT(AIObject != nullptr);
-        ASSERT(info.Length() == 0);
-        info.post(AIObject->getUserBalance());
-    }
-    catch (const std::exception &e)
-    {
-        info.postError(e.what());
-    }
-}
-
 void JSAI::getConversationList(JQAsyncInfo &info)
 {
     try
@@ -381,7 +367,6 @@ extern JSValue createAI(JQModuleEnv *env)
     tpl->SetProtoMethodPromise("generateResponse", &JSAI::generateResponse);
     tpl->SetProtoMethod("stopGeneration", &JSAI::stopGeneration);
     tpl->SetProtoMethodPromise("getModels", &JSAI::getModels);
-    tpl->SetProtoMethodPromise("getUserBalance", &JSAI::getUserBalance);
 
     tpl->SetProtoMethodPromise("getConversationList", &JSAI::getConversationList);
     tpl->SetProtoMethodPromise("createConversation", &JSAI::createConversation);
